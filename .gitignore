@@ -54,3 +54,6 @@ dkms.conf
 
 IOTClient/udpclient
 IOTServer/udpserver
+*/.lastip
+client
+server
