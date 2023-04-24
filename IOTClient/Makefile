@@ -26,3 +26,6 @@ upload:
 
 connect:
 	ssh -t root@$$(cat $(IPFILE)) "./udpclient"
+
+format:
+	clang-format -i src/udpclient.c
