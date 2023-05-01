@@ -44,9 +44,7 @@ int udp_send_data(char* msg) {
         return 1;
     }
 
-    return !strcmp(server_message, "ACK");
-
-    return 0;
+    return strcmp(server_message, "ACK");
 }
 
 void udp_close() {
