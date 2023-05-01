@@ -21,3 +21,11 @@ Client for the Raspberry Pi, that takes measurements and sends it to the Thingsb
 ## IOTClient-Server
 
 [Basic Implementation](https://www.educative.io/answers/how-to-implement-udp-sockets-in-c)
+
+## RaspberryClient
+
+[cJSON Library](https://github.com/DaveGamble/cJSON)
+
+## RaspberryServer
+
+[Basic Node.js Server](https://bipinparajuli.com.np/blog/create-udp-clinet-and-server-with-node.js)
