@@ -41,12 +41,10 @@ int main(int argc, char** argv) {
             sleep(1);
         }
         // Send data to UDP server
-        //udp_send_data(generateJSON(PLACEHOLDER));
-        printf("Data to be sent:\n");
         for (int i = 0; i < 10; i++) {
-            char tmp[200];
-            generateJSON(tmp, color[i].r, color[i].g, color[i].b, acc[i].x, acc[i].y, acc[i].z);
-            printf("============Frame %d============:\n%s\n================================", i, tmp);
+            char tmp[2000];
+            json_generate(tmp, color, acc);
+            udp_send_data(tmp);
         }
 
 
