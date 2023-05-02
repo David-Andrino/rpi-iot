@@ -16,7 +16,7 @@ server.on('message', (message, info) => {
 
     console.log('Data received at ' + Date().toLocaleString('es-ES'))
     JSON.parse(message).forEach(e => {
-        console.log(`\tSample ${e.sample}:\n\t\tAcceleration: (x, y, z)=(${e.acceleration.x}, ${e.acceleration.y}, ${e.acceleration.z})\n\t\tColor: (r, g, b)=(${e.color.r}, ${e.color.g}, ${e.color.b})`)
+        console.log(`\tSample ${e.sample}:\n\t\tAcceleration: (x, y, z)=(${round(e.acceleration.x)}, ${round(e.acceleration.y)}, ${round(e.acceleration.z)})\n\t\tColor: (r, g, b)=(${round(e.color.r)}, ${round(e.color.g)}, ${round(e.color.b)})`)
         aX.push(e.acceleration.x)
         aY.push(e.acceleration.y)
         aZ.push(e.acceleration.z)
@@ -32,8 +32,8 @@ server.on('message', (message, info) => {
     let [mG, dG] = calculateParams(aG)
     let [mB, dB] = calculateParams(aB)
 
-    console.log(`Average data:\n\t(x, y, z) = (${mX}, ${mY}, ${mZ})\n\t(r, g, b) = (${mR}, ${mG}, ${mB})`) 
-    console.log(`Standard dev:\n\t(x, y, z) = (${dX}, ${dY}, ${dZ})\n\t(r, g, b) = (${dR}, ${dG}, ${dB})`) 
+    console.log(`Average data:\n\t(x, y, z) = (${round(mX)}, ${round(mY)}, ${round(mZ)})\n\t(r, g, b) = (${round(mR)}, ${round(mG)}, ${round(mB)})`) 
+    console.log(`Standard dev:\n\t(x, y, z) = (${round(dX)}, ${round(dY)}, ${round(dZ)})\n\t(r, g, b) = (${round(dR)}, ${round(dG)}, ${round(dB)})`) 
 
     const response = Buffer.from('ACK')
     server.send(response, info.port, info.address, (err) => {})
@@ -48,5 +48,7 @@ function calculateParams(arr) {
 
     return [mean, stdDev];
 }
+
+const round = (num) => Math.round(1000 * num) / 1000
 
 server.bind(port)
