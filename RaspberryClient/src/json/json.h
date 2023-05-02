@@ -1,8 +1,9 @@
 #ifndef GENERATEJSON_H
 #define GENERATEJSON_H
 
-#include <stdint.h>
+#include "../accelerometer/accelerometer.h"
+#include "../colorSensor/colorSensor.h"
 
-extern int generateJSON(char *str, uint8_t r, uint8_t g, uint8_t b, float x, float y, float z);
+extern int json_generate(char *str, color_t *colors, acc_t *accs);
 
 #endif
