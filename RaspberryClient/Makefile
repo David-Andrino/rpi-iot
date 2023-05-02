@@ -49,7 +49,7 @@ upload:
 	scp $(MAIN) root@$$(cat $(IPFILE)):.
 
 connect:
-	ssh -t root@$$(cat $(IPFILE)) "./$(MAIN)"
+	ssh -t root@$$(cat $(IPFILE)) "./$(MAIN) $$(ifconfig ens33 | grep 'inet ' | awk '{print $$2}') 2000"
 
 format:
 	find . -name *.h -o -name *.c | xargs clang-format -i
