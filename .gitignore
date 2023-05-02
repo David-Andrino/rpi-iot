@@ -58,3 +58,4 @@ IOTServer/udpserver
 client
 server
 RaspberryClient/rpiclient
+testclientserver.sh
