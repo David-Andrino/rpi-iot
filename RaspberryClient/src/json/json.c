@@ -1,7 +1,8 @@
 #include <string.h>
 #include <stdint.h>
 
-#include <cJSON.h>
+#include <cjson/cJSON.h>
+#include <stdlib.h>
 #include "json.h"
 
 int json_generate(char *str, color_t *colors, acc_t *accs) {
