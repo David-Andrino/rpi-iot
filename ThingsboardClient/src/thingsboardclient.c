@@ -10,7 +10,7 @@
 #include "accelerometer/accelerometer.h"
 #include "colorSensor/colorSensor.h"
 #include "json/json.h"
-#include "udpclient/udpclient.h"
+#include "mosquittoClient/mosquittoClient.h"
 
 volatile int stop = 0;
 
@@ -29,7 +29,6 @@ int main(int argc, char** argv) {
     // Initialize sensors and clients
     acc_init();
     cs_init();
-    udp_init(argv[1], atoi(argv[2]));
 
     color_t color[10];
     acc_t   acc[10];
@@ -44,7 +43,7 @@ int main(int argc, char** argv) {
         for (int i = 0; i < 10; i++) {
             char tmp[2000];
             json_generate(tmp, color, acc);
-            udp_send_data(tmp);
+            mqtt_send_data(tmp);
         }
 
 
@@ -53,5 +52,4 @@ int main(int argc, char** argv) {
     // Close the file descriptors
     acc_close();
     cs_close();
-    udp_close();
 }
