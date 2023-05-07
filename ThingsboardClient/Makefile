@@ -4,7 +4,7 @@ SRC=src
 OUT=out
 IPFILE=.lastip
 MAIN=thingsboardclient
-MODULES=accelerometer.o colorSensor.o json.o
+MODULES=accelerometer.o colorSensor.o json.o mosquittoClient.o
 INCLUDEPATH=/home/ubuntu/Desktop/buildroot2/buildroot-2022.11/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/include/
 LIBPATH=/home/ubuntu/Desktop/buildroot2/buildroot-2022.11/output/host/arm-buildroot-linux-gnueabihf/sysroot/usr/lib
 
@@ -26,6 +26,9 @@ $(OUT)/colorSensor.o: $(SRC)/colorSensor/colorSensor.c $(SRC)/colorSensor/colorS
 	$(GXX) -c $(FLAGS) -I$(INCLUDEPATH) -o $@ $<
 
 $(OUT)/json.o: $(SRC)/json/json.c $(SRC)/json/json.h | $(OUT)
+	$(GXX) -c $(FLAGS) -I$(INCLUDEPATH) -o $@ $<
+
+$(OUT)/mosquittoClient.o: $(SRC)/mosquittoClient/mosquittoClient.c $(SRC)/mosquittoClient/mosquittoClient.h | $(OUT)
 	$(GXX) -c $(FLAGS) -I$(INCLUDEPATH) -o $@ $<
 
 clean:
