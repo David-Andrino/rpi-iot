@@ -30,7 +30,7 @@ int json_generate(char *str, color_t *colors, acc_t *accs) {
 
     }
 
-    char *json_str = cJSON_Print(acc_color);
+    char *json_str = cJSON_PrintUnformatted(acc_color);
     strcpy(str, json_str);
     free(json_str);
     cJSON_Delete(acc_color);
