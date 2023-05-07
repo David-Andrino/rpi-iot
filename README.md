@@ -29,3 +29,7 @@ Client for the Raspberry Pi, that takes measurements and sends it to the Thingsb
 ## RaspberryServer
 
 [Basic Node.js Server](https://bipinparajuli.com.np/blog/create-udp-clinet-and-server-with-node.js)
+
+## Thingsboard client
+[Thingsboard Installation](https://thingsboard.io/docs/user-guide/install/ubuntu/)
+[Getting Started with Thingsboard](https://thingsboard.io/docs/getting-started-guides/helloworld/?connectdevice=mqtt-linux)
