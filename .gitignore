@@ -60,3 +60,4 @@ server
 RaspberryClient/rpiclient
 testclientserver.sh
 ThingsboardClient/thingsboardclient
+ThingsboardClient/src/mosquittoClient/credentials.h
