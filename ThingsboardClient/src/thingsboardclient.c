@@ -30,23 +30,15 @@ int main(int argc, char** argv) {
     acc_init();
     cs_init();
 
-    color_t color[10];
-    acc_t   acc[10];
+    color_t color;
+    acc_t   acc;
     while (!stop) {
-        for (int i = 0; i < 10; i++) {
-            // Read data 10 times, waiting 1 second
-            acc_read(&(acc[i]));
-            cs_read_clear_corrected(&(color[i]));
-            sleep(1);
-        }
-        // Send data to UDP server
-        for (int i = 0; i < 10; i++) {
-            char tmp[2000];
-            json_generate(tmp, color, acc);
-            mqtt_send_data(tmp);
-        }
-
-
+        acc_read(&acc);
+        cs_read_clear_corrected(&color);
+        char tmp[2000];
+        json_generate(tmp, color, acc);
+        mqtt_send_data(tmp);
+        sleep(1);
     }
 
     // Close the file descriptors

@@ -5,35 +5,26 @@
 #include <stdlib.h>
 #include "json.h"
 
-int json_generate(char *str, color_t *colors, acc_t *accs) {
+int json_generate(char *str, color_t color, acc_t acc) {
 
-    cJSON *acc_color = cJSON_CreateArray();
+    cJSON *object = cJSON_CreateObject();
 
-    for (int i = 0; i < 10; i++){
-        cJSON *sample = cJSON_CreateObject();
+    cJSON *accJSON = cJSON_CreateObject();
+    cJSON_AddNumberToObject(accJSON, "x", acc.x);
+    cJSON_AddNumberToObject(accJSON, "y", acc.y);
+    cJSON_AddNumberToObject(accJSON, "z", acc.z);
+    cJSON_AddItemToObject(object, "acceleration", accJSON);
 
-        cJSON_AddNumberToObject(sample, "sample", i);
+    cJSON *colorJSON = cJSON_CreateObject();
+    cJSON_AddNumberToObject(colorJSON, "r", color.r);
+    cJSON_AddNumberToObject(colorJSON, "g", color.g);
+    cJSON_AddNumberToObject(colorJSON, "b", color.b);
+    cJSON_AddItemToObject(object, "color", colorJSON);
 
-        cJSON *acc = cJSON_CreateObject();
-        cJSON_AddNumberToObject(acc, "x", accs[i].x);
-        cJSON_AddNumberToObject(acc, "y", accs[i].y);
-        cJSON_AddNumberToObject(acc, "z", accs[i].z);
-        cJSON_AddItemToObject(sample, "acceleration", acc);
-
-        cJSON *color = cJSON_CreateObject();
-        cJSON_AddNumberToObject(color, "r", colors[i].r);
-        cJSON_AddNumberToObject(color, "g", colors[i].g);
-        cJSON_AddNumberToObject(color, "b", colors[i].b);
-        cJSON_AddItemToObject(sample, "color", color);
-
-        cJSON_AddItemToArray(acc_color, sample);
-
-    }
-
-    char *json_str = cJSON_PrintUnformatted(acc_color);
+    char *json_str = cJSON_PrintUnformatted(object);
     strcpy(str, json_str);
     free(json_str);
-    cJSON_Delete(acc_color);
+    cJSON_Delete(object);
 
     return strlen(str);
 }
