@@ -9,17 +9,13 @@ int json_generate(char *str, color_t color, acc_t acc) {
 
     cJSON *object = cJSON_CreateObject();
 
-    cJSON *accJSON = cJSON_CreateObject();
-    cJSON_AddNumberToObject(accJSON, "x", acc.x);
-    cJSON_AddNumberToObject(accJSON, "y", acc.y);
-    cJSON_AddNumberToObject(accJSON, "z", acc.z);
-    cJSON_AddItemToObject(object, "acceleration", accJSON);
+    cJSON_AddNumberToObject(object, "acc_x", acc.x);
+    cJSON_AddNumberToObject(object, "acc_y", acc.y);
+    cJSON_AddNumberToObject(object, "acc_z", acc.z);
 
-    cJSON *colorJSON = cJSON_CreateObject();
-    cJSON_AddNumberToObject(colorJSON, "r", color.r);
-    cJSON_AddNumberToObject(colorJSON, "g", color.g);
-    cJSON_AddNumberToObject(colorJSON, "b", color.b);
-    cJSON_AddItemToObject(object, "color", colorJSON);
+    cJSON_AddNumberToObject(object, "color_r", color.r);
+    cJSON_AddNumberToObject(object, "color_g", color.g);
+    cJSON_AddNumberToObject(object, "color_b", color.b);
 
     char *json_str = cJSON_PrintUnformatted(object);
     strcpy(str, json_str);

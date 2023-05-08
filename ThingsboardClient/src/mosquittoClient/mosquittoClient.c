@@ -17,7 +17,7 @@ void mqtt_send_data(char* data) {
     exit(1);
 #endif
     char* command = malloc(COMMAND_MAX_LENGTH * sizeof(char));
-    sprintf(command, "mosquitto_pub -d -q 1 -h \"%s\" -p \"1883\" -t \"v1/devices/me/telemetry\" -u \"%s\" -m %s", HOSTNAME, TOKEN, data);
+    sprintf(command, "mosquitto_pub -d -q 1 -h \"%s\" -p \"1883\" -t \"v1/devices/me/telemetry\" -u \"%s\" -m %s &>/dev/null", HOSTNAME, TOKEN, data);
 #ifndef DEBUG
     system(command);
 #else 
