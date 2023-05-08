@@ -1,3 +1,6 @@
+// Basic Server for the Raspberry Project
+// Implemented in Node.js for simplicity
+
 const udp = require('dgram')
 const server = udp.createSocket('udp4')
 

@@ -1,6 +1,6 @@
 /**
- * @brief Basic C UDP client
- * @author David Andrino & Fernando Sanz
+ * \brief Basic C UDP client
+ * \author David Andrino & Fernando Sanz
  */
 #include <arpa/inet.h>
 #include <sys/socket.h>

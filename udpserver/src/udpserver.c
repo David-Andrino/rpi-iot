@@ -1,6 +1,7 @@
 /**
-@authors David Andrino & Fernando Sanz
-*/
+ * \brief Basic UDP server
+ * \authors David Andrino & Fernando Sanz
+ */
 #include <stdio.h>
 #include <string.h>
 #include <sys/socket.h>
