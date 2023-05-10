@@ -19,11 +19,6 @@ void sigint_isr(int s) {
 }
 
 int main(int argc, char** argv) {
-    if (argc != 3) {
-        printf("Usage: %s IP PORT", argv[0]);
-        return -1;
-    }
-
     signal(SIGINT, sigint_isr);
 
     // Initialize sensors and clients
